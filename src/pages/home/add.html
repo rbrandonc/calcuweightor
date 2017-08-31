@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-navbar color=primary>
+    <ion-title>
+      Add Weight
+    </ion-title>
+  </ion-navbar>
+  <ion-segment [(ngModel)]="standard">
+   <ion-segment-button value="lbs">
+     lbs
+   </ion-segment-button>
+   <ion-segment-button value="kgs">
+     kilos
+   </ion-segment-button>
+ </ion-segment>
+</ion-header>
+
+<ion-content>
+  <div [ngSwitch]="standard">
+    <div padding *ngSwitchCase="'lbs'">
+      <ion-row align-items-center style="font-size: 275%; text-align: center" *ngFor="let item of imperial">
+        <ion-col col-3>
+          <button ion-button icon-only (click)="remove('lbs'+item)"
+            [disabled]="plates['lbs' + item] <= 0">
+            <ion-icon name="md-remove"></ion-icon>
+          </button>
+        </ion-col>
+
+        <ion-col col-5 style="justify-content: flex-end">
+          <div>
+            {{ item }} ({{ plates['lbs' + item] }})
+          </div>
+        </ion-col>
+
+        <ion-col col-4 style="justify-content: flex-end">
+          <button ion-button icon-only (click)="add('lbs'+item)">
+            <ion-icon name="md-add"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div padding *ngSwitchCase="'kgs'">
+      <ion-row align-items-center style="font-size: 275%; text-align: center" *ngFor="let item of metric">
+        <ion-col col-3>
+          <button ion-button icon-only (click)="remove('kgs'+item)"
+            [disabled]="plates['kgs' + item] <= 0">
+            <ion-icon name="md-remove"></ion-icon>
+          </button>
+        </ion-col>
+
+        <ion-col col-5 style="justify-content: flex-end">
+          <div>
+            {{ item }} ({{ plates['kgs' + item] }})
+          </div>
+        </ion-col>
+
+        <ion-col col-4 style="justify-content: flex-end">
+          <button ion-button icon-only (click)="add('kgs'+item)">
+            <ion-icon name="md-add"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-row>
+    <ion-col>
+      <button ion-button block (click)='this.clear()'>Clear</button>
+    </ion-col>
+    <ion-col>
+      <button ion-button block (click)='this.navCtrl.pop()'>Done</button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

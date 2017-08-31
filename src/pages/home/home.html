@@ -1,14 +1,18 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color=primary (click)='toggleStandard()'>
     <ion-title>
-      Ionic Blank
+      Weight Calc - Total: {{ this.total.toString() === this.total.toString().substring(0, this.total.toString().indexOf('.'))
+      ? this.total.toString() : this.total.toFixed(2) }}{{ standard }}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <div id="grip" class="bar"></div>
+  <div id="collar" class="bar"></div>
+  <div id="rack" class="bar"></div>
+
+  <ion-fab bottom right (click)="add()">
+    <button ion-fab mini color=primary><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 </ion-content>
