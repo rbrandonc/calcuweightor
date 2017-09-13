@@ -20,12 +20,12 @@ ion-col {
 }
 
 .bar {
-  background-color: #ccc;
+  background-color: #aaa;
   position: absolute;
 }
 
 #grip {
-  height: 200px;
+  height: 160px;
   width: 15px;
   bottom: 0;
   left: 50%;
@@ -35,7 +35,7 @@ ion-col {
 #collar {
   height: 20px;
   width: 40px;
-  bottom: 200px;
+  bottom: 160px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -43,7 +43,58 @@ ion-col {
 #rack {
   height: 80px;
   width: 25px;
-  bottom: 220px;
+  bottom: 180px;
   left: 50%;
   transform: translateX(-50%);
+}
+
+#cap {
+  height: 15px;
+  width: 24px;
+  bottom: 180px;
+  // left: 49%;
+  background-color: #aaa;
+}
+
+.weightContainer {
+  // height: 100px;
+  position: absolute;
+  bottom: 180px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  hr:first-of-type {
+    display: none;
+  }
+}
+
+.plateExtraSmall {
+  background-color: #DFDF00;
+  height: 8px;
+  width: 50px !important;
+}
+
+.plateSmall {
+  background-color: #1FCB4A;
+  height: 10px;
+  width: 100px !important;
+}
+
+.plateMedium {
+  background-color: #9669FE;
+  height: 18px;
+  width: 150px;
+}
+
+.plateLarge {
+  background-color: #FF4848;
+  height: 25px;
+  width: 200px !important;
+}
+
+hr {
+  height: 1px;
+  padding: 0;
+  margin: 0;
+  background-color: rgba(0,0,0,0) !important;
 }

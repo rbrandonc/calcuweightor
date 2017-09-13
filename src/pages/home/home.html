@@ -1,9 +1,25 @@
 <ion-header>
   <ion-navbar color=primary (click)='toggleStandard()'>
     <ion-title>
-      Weight Calc - Total: {{ this.total.toString() === this.total.toString().substring(0, this.total.toString().indexOf('.'))
+      Total: {{ this.total.toString() === this.total.toString().substring(0, this.total.toString().indexOf('.'))
       ? this.total.toString() : this.total.toFixed(2) }}{{ standard }}
     </ion-title>
+  </ion-navbar>
+
+  <ion-navbar *ngIf="firstLaunch === 'true'">
+    <!-- <ion-title>
+      <h6>
+      </h6>
+    </ion-title> -->
+    <div style="padding: 10px; font-size: 15px">
+      Tap the title bar to switch lbs/kilos
+    </div>
+    <ion-buttons right>
+      <button ion-button icon-only clear (click)="closeTips()">
+        <ion-icon name="md-close">
+        </ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -12,7 +28,32 @@
   <div id="collar" class="bar"></div>
   <div id="rack" class="bar"></div>
 
+<!-- <div class="plateContainer"> -->
+<div class="weightContainer">
+  <ion-row justify-content-center>
+    <div id="cap"></div>
+  </ion-row>
+  <ng-container *ngFor="let weight of getPlates()">
+    <ng-container *ngIf="plates[weight] > 0">
+      <ng-container *ngFor="let plate of getNumPlates(weight)">
+        <hr>
+        <ion-row justify-content-center>
+          <div *ngIf="plateSize(weight) === 'plateLarge'" class="plateLarge">
+          </div>
+          <div *ngIf="plateSize(weight) === 'plateMedium'" class="plateMedium">
+          </div>
+          <div *ngIf="plateSize(weight) === 'plateSmall'" class="plateSmall">
+          </div>
+          <div *ngIf="plateSize(weight) === 'plateExtraSmall'" class="plateExtraSmall">
+          </div>
+        </ion-row>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</div>
+<!-- </div> -->
+
   <ion-fab bottom right (click)="add()">
-    <button ion-fab mini color=primary><ion-icon name="add"></ion-icon></button>
+    <button ion-fab mini color=primary><ion-icon name="md-add"></ion-icon></button>
   </ion-fab>
 </ion-content>
